@@ -28,14 +28,14 @@
                     <td th:text="${tarea.etapa.nombre}"></td>
                     <td th:text="${tarea.empleado != null} ? ${tarea.empleado.apellido}+','
                         +${tarea.empleado.nombre}: 'no asignado'"></td>
-                    <td th:text="${#calendars.format(tarea.fechInicio,'dd/MM/yyyy')}"></td>
+                    <td th:text="${#calendars.format(tarea.fechaInicio,'dd/MM/yyyy')}"></td>
                     <td th:text="${#calendars.format(tarea.fechaFin,'dd/MM/yyyy')}"></td>
                     <td><a class="btn btn-outline-warning btn.sm"
-                           th:href="@{/tarea/editar/}+${tarea.id}">Editar</a></td>
+                           th:href="@{/tarea/editar/tarea.id}">Editar</a></td>
                     <td><a class="btn btn-outline-warning btn.sm"
-                           th:href="@{/tarea/iniciar/}+${tarea.id}">Iniciar</a></td>
+                           th:href="@{/tarea/iniciar/tarea.id}">Iniciar</a></td>
                     <td><a class="btn btn-outline-danger btn.sm"
-                           th:href="@{/tarea/terminar/}+${tarea.id}">Terminar</a></td>
+                           th:href="@{/tarea/terminar/tarea.id}">Terminar</a></td>
                 </tr>
                 </tbody>
                 <tfoot>

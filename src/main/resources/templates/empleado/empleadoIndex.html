@@ -30,22 +30,22 @@
                     <td th:text="${empleado.apellido}"></td>
                     <td th:text="${empleado.nombre}"></td>
                     <td th:text="${empleado.dni}"></td>
-                    <td th:text="${#calendars.format(empleado.fechaNacimineto,'dd/MM/yyyy')}"></td>
+                    <td th:text="${#calendars.format(empleado.fechaNacimiento,'dd/MM/yyyy')}"></td>
                     <td th:text="${empleado.celular}"></td>
                     <td th:text="${empleado.email}"></td>
                     <td th:text="${#calendars.format(empleado.fechaIngreso,'dd/MM/yyyy')}"></td>
-                    <td><a class="btn btn-outline-warning btn.sm"
-                           th:href="@{/empleado/editar/}+${empleado.id}">Editar</a></td>
-                    <td><a class="btn btn-outline-danger btn.sm"
-                           th:href="@{/empleado/eliminar/}+${empleado.id}">Eliminar</a></td>
+                    <td><a class="btn btn-outline-warning btn-sm"
+                           th:href="@{/empleado/editar/empleado.id}">Editar</a></td>
+                    <td><a class="btn btn-outline-danger btn-sm"
+                           th:href="@{/empleado/eliminar/empleado.id}">Eliminar</a></td>
                 </tr>
                 </tbody>
                 <tfoot>
                 <tr>
                     <td colspan=9>
-                        <a class="btn btn.outline-primary" th:href="@/empleado/nuevo"
+                        <a class="btn btn.outline-primary" th:href="@{/empleado/nuevo}"
                            role="button">Agregar Empleado</a>
-                        <a class="btn btn.outline-secundary" th:href="@/index"
+                        <a class="btn btn.outline-secundary" th:href="@{/index}"
                            role="button">Regresar</a>
                     </td>
                 </tr>

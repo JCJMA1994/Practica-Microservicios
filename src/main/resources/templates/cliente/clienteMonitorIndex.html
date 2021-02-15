@@ -29,12 +29,12 @@
                 <tr th:each="trabajo : ${listaTrabajos}">
                     <td th:text="${trabajo.descripcion}"></td>
                     <td th:text="${trabajo.cliente.apellido}"></td>
-                    <td th:text="${calendars.format(trabajo.fechaTrabajo,'dd/MM/yyyy hh:mm')}"></td>
+                    <td th:text="${#calendars.format(trabajo.fechaTrabajo,'dd/MM/yyyy hh:mm')}"></td>
                     <td th:text="${trabajo.largo}"></td>
                     <td th:text="${trabajo.ancho}"></td>
                     <td th:text="${trabajo.costo}"></td>
-                    <td th:text="${calendars.format(trabajo.fechaEntrega,'dd/MM/yyyy hh:mm')}"></td>
-                    <td><a class="btn btn-outline-success btn-sm" th:href="@{/cliente/monitor/trabajo/}+${trabajo.id}">Ver
+                    <td th:text="${#calendars.format(trabajo.fechaEntrega,'dd/MM/yyyy hh:mm')}"></td>
+                    <td><a class="btn btn-outline-success btn-sm" th:href="@{/cliente/monitor/trabajo/trabajo.id}">Ver
                         Progreso</a></td>
                 </tr>
                 </tbody>

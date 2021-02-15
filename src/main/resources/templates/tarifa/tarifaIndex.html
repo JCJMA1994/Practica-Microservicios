@@ -24,12 +24,12 @@
                 <tbody>
                 <tr th:each="tarifa : ${listaTarifas}">
                     <td th:text="${tarifa.descripcion}"></td>
-                    <td th:text="${tarea.areaMinima}"></td>
+                    <td th:text="${tarifa.areaMinima}"></td>
                     <td th:text="${tarifa.precio}"></td>
                     <td><a class="btn btn-outline-warning btn.sm"
-                           th:href="@{/tarifa/editar/}+${tarea.id}">Editar</a></td>
+                           th:href="@{/tarifa/editar/tarea.id}">Editar</a></td>
                     <td><a class="btn btn-outline-danger btn.sm"
-                           th:href="@{/tarifa/terminar/}+${tarifa.id}">Eliminar</a></td>
+                           th:href="@{/tarifa/terminar/tarifa.id}">Eliminar</a></td>
                 </tr>
                 </tbody>
                 <tfoot>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http//www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="disenoBase::site-head"></head>
 <body>
@@ -34,13 +34,13 @@
                     <td th:text="${trabajo.largo}"></td>
                     <td th:text="${trabajo.ancho}"></td>
                     <td th:text="${trabajo.costo}"></td>
-                    <td th:text="${#calenders.format(trabajo.fechaEntrega, 'dd/MM/yyyy hh:mm')} "></td>
+                    <td th:text="${#calendars.format(trabajo.fechaEntrega, 'dd/MM/yyyy hh:mm')} "></td>
                     <td><a class="btn btn-outline-warning btn.sm"
-                           th:href="@{/tarea/}+${trabajo.id}+'/index/'">Tareas</a></td>
+                           th:href="@{/tarea/trabajo.id}">Tareas</a></td>
                     <td><a class="btn btn-outline-danger btn.sm"
-                           th:href="@{/trabajo/editar/}+${trabajo.id}">Editar</a></td>
+                           th:href="@{/trabajo/editar/trabajo.id}">Editar</a></td>
                     <td><a class="btn btn-outline-danger btn.sm"
-                           th:href="@{/trabajo/eliminar/}+${trabajo.id}">Eliminar</a></td>
+                           th:href="@{/trabajo/eliminar/trabajo.id}">Eliminar</a></td>
                 </tr>
                 </tbody>
                 <tfoot>

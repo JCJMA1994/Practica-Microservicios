@@ -24,15 +24,15 @@
                         <h3 class="card-title"
                             th:text="${tarea.fechaInicio == null}? 'Pendiente' :
                         (${tarea.fechaFin == null} ?
-                        'En Proceso' : 'Terminado'">Titulo</h3>
+                        'En Proceso' : 'Terminado')">Titulo</h3>
                         <h5 class="card-text"
                             th:text="${tarea.empleado != null}?
                              ${tarea.empleado.apellido} + ','
                             + ${tarea.empleado.nombre}: 'Sin responsable'">Contenido</h5>
                         <p th:text="${tarea.fechaInicio != null} ? 'Iniciado'
-                            + ${calendars.format(tarea.fechaInicio, 'dd/MM/yyyy')}:''"></p>
+                            + ${#calendars.format(tarea.fechaInicio, 'dd/MM/yyyy')}:''"></p>
                         <p th:text="${tarea.fechaFin != null} ? 'Terminado'
-                            + ${calendars.format(tarea.fechaFin, 'dd/MM/yyyy')}:''"></p>
+                            + ${#calendars.format(tarea.fechaFin, 'dd/MM/yyyy')}:''"></p>
                     </div>
                 </div>
             </div>
