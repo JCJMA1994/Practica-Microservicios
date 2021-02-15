@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="disenoBase::site-head"></head>
+<body>
+<header th:replace="disenoBase::site-header"></header>
+<main role="main">
+    <div class="container" id="divCasiForm">
+        <div class="page-header">
+            <h4 class="text-primary">Datos de Tarea</h4>
+        </div>
+        <div class="container">
+            <form th:object="${tarea}" th:action="@{/tarea/editar}" method="post">
+                <div th:if="${#fields.hasErrors('*')}"
+                     class="alert alert-danger alert-dismissible fade show"
+                     role="alert">
+                    <strong>Un inconveniente!</strong>Por favor verifique los campos.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="form-group">
+                    <input type="hidden" class="form-control disabled" id="inputID" placeholder="Ingrese ID"
+                           th:field="*{id}" th:value="*{id}">
+                    <span class="help-block" th:if="${#fields.hasErrors('id')}">
+                        <small th:errors="*{id}" class="text-danger">ID error</small>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <!-- <label for="inputApellido">Trabajo:</label>-->
+                    <input type="hidden" class="form-control disabled" id="inputTrabajoID"
+                           placeholder="Ingrese Trabajo "
+                           th:class="${#fields.hasErrors('apellido')}? 'form-control alert-danger' : 'form-control'"
+                           th:field="*{trabajo.id}" th:value="*{trabajo.id}">
+                    <span class="help-block" th:if="${#fields.hasErrors('trabajo.id')}">
+                        <small th:errors="*{trabajo.id}" class="text-danger">trabajo_id error</small>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <input type="hidden" class="form-control" id="inputEtapaID" placeholder="Ingrese id"
+                           th:class="${#fields.hasErrors('nombre')}? 'form-control alert-danger' : 'form-control'"
+                           th:fields="*{etapa.id}" th:value="*{etapa.id}">
+                    <span class="help-block" th:if="${#fields.hasErrors('nombre')}">
+                        <small th:errors="*{etapa.id}" class="text-danger">etapa_id error</small>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="inputEtapa">Etapa: </label>
+                    <input type="text" class="form-control" id="inputEtapa" placeholder="Ingrese Etapa"
+                           th:class="${#fields.hasErrors('etapa.nombre')}? 'form-control alert-danger' : 'form-control'"
+                           th:fields="*{etapa.nombre}" th:value="*{etapa.nombre}">
+                    <span class="help-block" th:if="${#fields.hasErrors('etapa.nombre')}">
+                        <small th:errors="*{etapa.nombre}" class="text-danger">etapa_nombre error</small>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="selectEmpleado">Empelado:</label>
+                    <select id="selectEmpleado" name="empleado.id"
+                            th:class="${fields.hasErrors('empleado.id')}?
+                            'form-control alert-danger' : 'form-control'">
+                        <option th:each="sempleado : ${listaEmpleado}"
+                                th:value="${empleado.id}"
+                                th:text="${empleado.apellido}+','+${sempleado.nombre}"
+                                th:selected="${sempleado.id}==*{empleado.id}"></option>
+                    </select>
+                    <span class="help-block" th:if="${#fields.hasErrors('etapa.id')}">
+                        <small th:errors="*{etapa.id}" class="text-danger">Empleado error</small>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="inputfechaInicio">fecha Inicio:</label>
+                    <input type="text" id="inputfechaInicio"
+                           th:class="${#fields.hasErrors('fechaInicio')}? 'form-control alert-danger' : 'form-control'"
+                           th:fields="*{fechaInicio}" th:value="*{fechaInicio}" readonly>
+                    <span class="help-block" th:if="${#fields.hasErrors('fechaInicio')}">
+                        <small th:errors="*{fechaInicio}" class="text-danger">fechaInicio error</small>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="inputFechaFin">fecha termino:</label>
+                    <input type="text" class="form-control" id="inputFechaFin"
+                           th:class="${#fields.hasErrors('fechaFin')}? 'form-control alert-danger disabled' : 'form-control disabled'"
+                           th:fields="*{fechaFin}" th:value="*{fechaFin}">
+                    <span class="help-block" th:if="${#fields.hasErrors('fechaFin')}">
+                        <small th:errors="*{fechaFin}" class="text-danger">fechaFin error</small>
+                    </span>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-outline-primary">Aceptar</button>
+                <a th:href="@{/tarea/}+*{trabajo.id}+'/index'" class="btn btn-outline-secondary"
+                   role="button">Regresar</a>
+            </form>
+        </div>
+    </div>
+    <div class="container" id="divCasoRes" style="display: none;"></div>
+</main>
+<footer th:replace="disenoBase::site-footer"></footer>
+<div th:replace="disenoBase::site-bootstrap"></div>
+</body>
+</html>

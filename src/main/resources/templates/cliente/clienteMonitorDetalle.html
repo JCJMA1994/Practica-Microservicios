@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="disenoBase::site-head"></head>
+<body>
+<header th:replace="disenoBase::site-header"></header>
+<main role="main">
+    <div class="container" id="divCasoForm">
+        <Article>
+            <header>
+                <h4 class="text-primary" th:text="'Monitoreo de Tareas -'+${trabajo.descripcion}"></h4>
+            </header>
+            <div class="card-deck">
+                <div style="max-width: 18rem;" th:each="tarea : ${listaTareas}"
+                     th:class="${tarea.empleado == null}?
+                        'card text-white bg-danger mb-3' :
+                        (${tarea.fechaInicio == null} ?
+                        'card text-white bg-secondary mb-3' :
+                        (${tarea.fechaFin == null} ?
+                        'card text-white bg-primary mb-3' :
+                        'card text-white bg-success mb-3'))">
+                    <div class="card-header" th:text="${tarea.etapa.nombre}">header</div>
+                    <div class="card-body">
+                        <h3 class="card-title"
+                            th:text="${tarea.fechaInicio == null}? 'Pendiente' :
+                        (${tarea.fechaFin == null} ?
+                        'En Proceso' : 'Terminado'">Titulo</h3>
+                        <h5 class="card-text"
+                            th:text="${tarea.empleado != null}?
+                             ${tarea.empleado.apellido} + ','
+                            + ${tarea.empleado.nombre}: 'Sin responsable'">Contenido</h5>
+                        <p th:text="${tarea.fechaInicio != null} ? 'Iniciado'
+                            + ${calendars.format(tarea.fechaInicio, 'dd/MM/yyyy')}:''"></p>
+                        <p th:text="${tarea.fechaFin != null} ? 'Terminado'
+                            + ${calendars.format(tarea.fechaFin, 'dd/MM/yyyy')}:''"></p>
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <div class="container">
+                    <a class="btn btn-outline-secondary"
+                       th:href="@{/cliente/monitorear}" role="button">Regresar</a>
+                </div>
+            </footer>
+        </Article>
+    </div>
+</main>
+<footer th:replace="disenoBase::site-footer"></footer>
+<div th:replace="disenoBase::site-bootstrap"></div>
+</body>
+</html>
